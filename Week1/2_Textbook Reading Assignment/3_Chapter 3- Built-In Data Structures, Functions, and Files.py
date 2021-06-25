@@ -80,11 +80,11 @@ print(seq[::-1])    # [1, 0, 3, 6, 3, 2, 7] # Reversing it cleverly
 
 # enumerate
 some_list = ['foo', 'bar', 'baz']
-print(list(enumerate(some_list)))
+print(list(enumerate(some_list)))   # [(0, 'foo'), (1, 'bar'), (2, 'baz')]
 mapping = {}
 for i, v in enumerate(some_list):
     mapping[v] = i
-print(mapping)
+print(mapping)  # {'foo': 0, 'bar': 1, 'baz': 2
 
 # zip
 # A very common use of zip is simultaneously iterating over multiple sequences, possibly also
@@ -115,8 +115,8 @@ Function 						Alternative syntax 		Description
 
 a.add(x) 						N/A 					Add element x to the set a
 
-a.clear() 						N/A 					Reset the set a to an empty state, discarding all 
-														of its elements
+a.clear() 						N/A 					Reset the set a to an empty state, discarding 
+                                                        all of its elements
 
 a.remove(x) 					N/A 					Remove element x from the set a
 
