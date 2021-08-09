@@ -1,0 +1,32 @@
+Book - Chapter 4- NumPy Basics Arrays and Vectorized Computation
+numpy.astype() - creates a new array copy of data even if the new dtype is the same as the old dtype
+
+Note change in arr_slice changed content of main arr from which the slice was taken the value is propagated (or broadcasted) to the entire selection. An important first distinction from Python’s built-in lists is that array slices are "views" on the original array. This means that the data is not copied, and any modifications to the view will be reflected in the source array. This is done to avoid memory issues when working on large arrays. If you want a copy of a slice of an ndarray instead of a view, you will need to explicitly copy the array—for example, arr[2:7].copy().
+
+Selecting data from an array by boolean indexing always creates a copy of the data, even if the returned array is unchanged.
+
+Keep in mind that fancy indexing, unlike slicing, always copies the data into a new array.
+
+Transposing is a special form of reshaping that similarly returns a view on the underlying data without copying anything. Arrays have the transpose method and also the special T attribute
+
+swapaxes similarly returns a view on the data without making a copy.
+
+unary & binary ufunc(universal function) don't act on original array and create copy
+
+Book - Chapter 5- Getting started with pandas
+the column returned from indexing a DataFrame is a view on the underlying data, not a copy. Thus, any in-place modifications to the Series will be reflected in the DataFrame. The column can be explicitly copied with the Series’s copy method.
+
+Book -
+Broadcasting describes how arithmetic works between arrays of different shapes. The simplest example of broadcasting occurs when combining a scalar value with an array for ex. np.arange(5) * 4. Here we say that the scalar value 4 has been broadcast to all of the other elements in the multiplication operation.
+
+Broadcasting Rule - Two arrays are compatible for broadcasting if for each trailing dimension (i.e., starting from the end) the axis lengths match or if either of the lengths is 1. Broadcasting is then performed over the missing or length 1 dimensions.
+
+Week 2 video - Querying a Series
+
+vectorization is the ability for a computer to execute multiple instructions at once, and with high performance chips, especially graphics cards, you can get dramatic speedups. Modern graphics cards can run thousands of instructions in parallel.
+
+Week2 video - DataFrame Data Structure
+
+Note - In DataFrame to access a row you need to compulsorily use loc or iloc. While in Series its fine and no compulsion. Also, if you try to use loc or iloc on column it will give you key error
+
+Chaining, by indexing on the return type of another index, can come with some costs and is best avoided if you can use another approach. In particular, chaining tends to cause Pandas to return a copy of the DataFrame instead of a view on the DataFrame. For selecting data, this is not a big deal, though it might be slower than necessary. If you are chaining data though this is an important distinction and can be a source of error. Hence consider this issue of chaining carefully, and try to avoid it, as it can cause unpredictable results, where your intent was to obtain a view of the data, but instead Pandas returns to you a copy.
